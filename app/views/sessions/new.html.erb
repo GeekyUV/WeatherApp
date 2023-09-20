@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag 'homepage.css' %>
+  <div class="login-container">
+    <h1 class="login-heading">What the Forecast?! Login</h1>
+    <%= form_for :session, url: login_path do |f| %>
+      <div class="form-group">
+        <%= f.label :email, class: 'form-label' %>
+        <%= f.text_field :email %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, class: 'form-label' %>
+        <%= f.password_field :password %>
+      </div>
+
+      <%= f.submit 'Log in', class: 'form-submit' %>
+
+      <%= link_to 'Sign Up', new_user_path, class: 'form-submit' %>
+
+      <% if flash[:error].present? %>
+        <div class="error">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</head>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag 'welcome.css' %>
+</head>
+<body>
+
+<div class="weather-container">
+  <div class="weather-form">
+    <h1 class="heading">Check Weather Conditions!</h1>
+    <%= form_tag(welcome_path, method: :get) do %>
+      <%= text_field_tag :city, params[:city], placeholder: 'Enter a city name' %>
+      <%= submit_tag 'Get Weather', class: 'form-submit' %>
+      <%= link_to 'logout', root_path, class: 'button'  %>
+    <% end %>
+    <% if @no_data_message.present? %>
+      <p><%= @no_data_message %></p>
+    <% else %>
+      <% if @temperature && @description %>
+        <h2>Weather in <%= params[:city] %></h2>
+        <p>Temperature: <%= @temperature %>°C</p>
+        <p>Description: <%= @description.capitalize %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+</body>
+</html>

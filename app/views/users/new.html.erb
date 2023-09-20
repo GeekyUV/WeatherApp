@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag 'signup.css' %>
+  <div class="signup-container">
+    <h1 class="signup-heading">Sign Up</h1>
+    <%= form_for @user, url: users_path do |f| %>
+      <div class="form-group">
+        <%= f.label :email, class: 'form-label' %>
+        <%= f.email_field :email %><br>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, class: 'form-label' %>
+        <%= f.password_field :password %><br>
+      </div>
+
+      <%= f.submit 'Sign Up', class: 'form-submit' %><br>
+
+      <% if flash[:success].present? %>
+        <div class="success">
+          <%= flash[:success] %>
+        </div>
+      <% end %>
+
+      <br>
+      <%= link_to 'Back', root_path, class: 'button' %>
+    <% end %>
+  </div>
+</head>
+</html>
